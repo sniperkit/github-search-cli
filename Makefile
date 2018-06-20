@@ -14,7 +14,7 @@ version: deps-ensure
 	@$(PROG_NAME) --version
 
 install: deps-ensure
-	@go install -ldflags  "-X github.com/sniperkit/github-search-cli/pkg.Version=`cat VERSION`" ./cmd/$(PROG_NAME)
+	@go install -ldflags  "-X github.com/sniperkit/github-search-cli/pkg.Version=`cat VERSION`" github.com/sniperkit/github-search-cli/cmd/$(PROG_NAME)
 	@$(PROG_NAME) --version
 
 fast: deps
