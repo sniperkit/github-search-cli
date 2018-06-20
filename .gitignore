@@ -36,6 +36,11 @@ dist/
 dist/*
 dist/**
 
+vendor
+vendor/
+vendor/*
+vendor/**
+
 *.exe
 *.test
 *.prof
