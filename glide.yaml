@@ -1,0 +1,9 @@
+package: github.com/sniperkit/github-search-cli
+import:
+- package: github.com/google/go-github
+  subpackages:
+  - github
+- package: github.com/jessevdk/go-flags
+- package: github.com/motemen/go-gitconfig
+- package: github.com/tcnksm/go-latest
+- package: golang.org/x/oauth2
