@@ -1,13 +1,13 @@
-package main
+package ghs
 
 import (
+	"context"
 	"errors"
 	"net/http"
 	"net/url"
 
 	"github.com/google/go-github/github"
 	"golang.org/x/oauth2"
-	"context"
 )
 
 type Search struct {
@@ -25,7 +25,7 @@ type SearchOpt struct {
 	token   string
 }
 
-func NewSearch(c context.Context,opt *SearchOpt) *Search {
+func NewSearch(c context.Context, opt *SearchOpt) *Search {
 	var tc *http.Client
 
 	if opt.token != "" {
@@ -42,19 +42,19 @@ func NewSearch(c context.Context,opt *SearchOpt) *Search {
 	return &Search{client: cli, option: opt}
 }
 
-func repoSearch(c context.Context,client *github.Client, page int, opt *SearchOpt) (*github.RepositoriesSearchResult, *github.Response, error) {
+func repoSearch(c context.Context, client *github.Client, page int, opt *SearchOpt) (*github.RepositoriesSearchResult, *github.Response, error) {
 	opts := &github.SearchOptions{
 		Sort:        opt.sort,
 		Order:       opt.order,
 		TextMatch:   false,
 		ListOptions: github.ListOptions{PerPage: opt.perPage, Page: page},
 	}
-	ret, resp, err := client.Search.Repositories(c,opt.query, opts)
+	ret, resp, err := client.Search.Repositories(c, opt.query, opts)
 	return ret, resp, err
 }
 
 func (s *Search) First(c context.Context) (repos []github.Repository, lastPage int, maxItem int, err error) {
-	ret, resp, err := repoSearch(c,s.client, 1, s.option)
+	ret, resp, err := repoSearch(c, s.client, 1, s.option)
 	if err != nil {
 		Debug("error repoSearch()\n")
 		return nil, 0, 0, err
@@ -82,7 +82,7 @@ func (s *Search) First(c context.Context) (repos []github.Repository, lastPage i
 	return ret.Repositories, last, max, nil
 }
 
-func (s *Search) Exec(c context.Context,page int) (repos []github.Repository, err error) {
+func (s *Search) Exec(c context.Context, page int) (repos []github.Repository, err error) {
 	Debug("Page%d go func search start\n", page)
 
 	Debug("Page%d query : %s\n", page, s.option.query)

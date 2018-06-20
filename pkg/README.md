@@ -3,7 +3,7 @@ ghs
 
 [![Build Status](https://travis-ci.org/sonatard/ghs.svg?branch=master)](https://travis-ci.org/sonatard/ghs)
 [![Coverage Status](https://coveralls.io/repos/github/sonatard/ghs/badge.svg)](https://coveralls.io/github/sonatard/ghs)
-[![Go Report Card](https://goreportcard.com/badge/github.com/sonatard/ghs)](https://goreportcard.com/report/github.com/sonatard/ghs)
+[![Go Report Card](https://goreportcard.com/badge/github.com/sniperkit/ghs)](https://goreportcard.com/report/github.com/sniperkit/ghs)
 
 `ghs` - command-line utility for searching Github repositoy.
 
@@ -41,7 +41,7 @@ Github search APIv3 QUERY infomation:
    https://help.github.com/articles/searching-repositories/
 
 Version:
-   ghs 0.0.9 (https://github.com/sonatard/ghs.git)
+   ghs 0.0.9 (https://github.com/sniperkit/ghs.git)
 ```
 
 Install
@@ -54,7 +54,7 @@ brew install sonatard/tools/ghs
 ```
 
 for Windows
-[Releases sonatard/ghs](https://github.com/sonatard/ghs/releases)
+[Releases sonatard/ghs](https://github.com/sniperkit/ghs/releases)
 
 
 Usage

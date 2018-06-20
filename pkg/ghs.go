@@ -1,17 +1,15 @@
-package main
+// !build lib
+package ghs
 
 import (
+	"context"
 	"errors"
 	"fmt"
 	"log"
 	"os"
 
 	"github.com/motemen/go-gitconfig"
-	"context"
 )
-
-// Version is ghs version number
-const Version string = "0.0.10"
 
 const (
 	// ExitCodeOK is 0
@@ -20,7 +18,7 @@ const (
 	ExitCodeError
 )
 
-func main() {
+func RealMain() {
 	num, err := ghs(os.Args[1:])
 	if err != nil {
 		fmt.Printf("Error: %v\n", err)
@@ -80,7 +78,7 @@ func ghs(args []string) (int, error) {
 	sOpt.token = getToken(sOpt.token)
 
 	c := context.Background()
-	repo := NewRepo(NewSearch(c,sOpt))
+	repo := NewRepo(NewSearch(c, sOpt))
 	reposChan, errChan := repo.Search(c)
 
 	Debug("main thread select start...\n")

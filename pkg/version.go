@@ -1,4 +1,4 @@
-package main
+package ghs
 
 import (
 	"fmt"
@@ -6,6 +6,9 @@ import (
 
 	"github.com/tcnksm/go-latest"
 )
+
+// Version is ghs version number
+const Version string = "0.0.10"
 
 func CheckVersion(ver string) {
 	if os.Getenv("GHS_PRINT") != "no" {

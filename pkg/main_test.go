@@ -1,4 +1,5 @@
-package main
+// !build lib
+package ghs
 
 import (
 	"net/http"

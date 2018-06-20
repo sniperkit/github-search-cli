@@ -1,10 +1,10 @@
-package main
+package ghs
 
 import (
 	"sync"
 
-	"github.com/google/go-github/github"
 	"context"
+	"github.com/google/go-github/github"
 )
 
 type Repo struct {
@@ -41,7 +41,7 @@ func (r *Repo) Search(c context.Context) (<-chan []github.Repository, <-chan err
 			wg.Add(1)
 			go func(p int) {
 				// notify main thread of 2nd - 10th search result
-				rs, err := r.search.Exec(c,p)
+				rs, err := r.search.Exec(c, p)
 				if err != nil {
 					Debug("sub thread error %d\n", p)
 					errChan <- err
